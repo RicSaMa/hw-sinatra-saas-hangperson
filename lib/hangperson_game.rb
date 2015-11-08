@@ -23,7 +23,7 @@ class HangpersonGame
     #controles
     throw ArgumentError if char=~ /[^a-z]/
     #acierta
-    return false if @guesses.include?(char) or @wrong_guesses.include?(char) 
+    return false if check_used_letter(char)
     
     if @word.include?(char)
       @guesses += char
@@ -33,6 +33,9 @@ class HangpersonGame
     
   end
   
+  def check_used_letter(char)
+    return true if char.nil? or @guesses.include?(char) or @wrong_guesses.include?(char)
+  end
   
   def word_with_guesses
     out = ""
