@@ -18,10 +18,9 @@ class HangpersonGame
 
   def guess(char)
     throw ArgumentError if char.nil?
-    throw ArgumentError if char==''
+    throw ArgumentError if char.empty? or !!(char =~ /[^a-zA-Z]/)
     char = char.downcase
     #controles
-    throw ArgumentError if char=~ /[^a-z]/
     #acierta
     return false if check_used_letter(char)
     
